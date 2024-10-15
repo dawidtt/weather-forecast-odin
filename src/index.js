@@ -51,6 +51,24 @@ async function getCurrentWeather(weatherJson) {
     hours24ArrFiltered,
   };
 }
+async function getWeatherForecast(weatherJson) {
+  function createDay(day) {
+    const dateTime = day.datetime;
+    const icon = day.icon;
+    const tempMax = day.tempmax;
+    const tempMin = day.tempmin;
+    return { dateTime, icon, tempMax, tempMin };
+  }
+  const currentDaysArr = weatherJson.days;
+  const daysArr = [];
+  for (let i = 0; i < 7; i++) {
+    const day = createDay(currentDaysArr[i]);
+    daysArr.push(day);
+  }
+  return daysArr;
+}
 const weatherJson = await getWeatherFromApi();
-const necessaryWeatherObj = await getCurrentWeather(weatherJson);
-console.log(necessaryWeatherObj);
+const currentWeather = await getCurrentWeather(weatherJson);
+console.log(currentWeather);
+const forecast = await getWeatherForecast(weatherJson);
+console.log(forecast);
