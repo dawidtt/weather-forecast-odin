@@ -67,8 +67,23 @@ async function getWeatherForecast(weatherJson) {
   }
   return daysArr;
 }
-const weatherJson = await getWeatherFromApi();
-const currentWeather = await getCurrentWeather(weatherJson);
-console.log(currentWeather);
-const forecast = await getWeatherForecast(weatherJson);
-console.log(forecast);
+// const weatherJson = await getWeatherFromApi();
+// const currentWeather = await getCurrentWeather(weatherJson);
+// console.log(currentWeather);
+// const forecast = await getWeatherForecast(weatherJson);
+// console.log(forecast);
+
+const searchSubmit = document.querySelector("#search-submit");
+async function handleSearchCity(event) {
+  event.preventDefault();
+
+  const citySearch = document.querySelector("#search-city");
+  console.log(citySearch.value);
+
+  const weatherJson = await getWeatherFromApi(citySearch.value);
+  const currentWeather = await getCurrentWeather(weatherJson);
+  console.log(currentWeather);
+  const forecast = await getWeatherForecast(weatherJson);
+  console.log(forecast);
+}
+searchSubmit.addEventListener("click", handleSearchCity);
