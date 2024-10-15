@@ -5,11 +5,11 @@ async function getWeatherFromApi(city = "Warszawa") {
     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=us&key=LNU6KDBHHJ4VX7EVPJTQ2E7XZ&contentType=json`,
   );
   const weatherJson = await weather.json();
-  console.log(weatherJson);
   return weatherJson;
 }
 
-async function getNecessaryWeather(weatherJson) {
+async function getCurrentWeather(weatherJson) {
+  const city = weatherJson.address;
   const icon = weatherJson.currentConditions.icon;
   const description = weatherJson.currentConditions.conditions;
   const currentTemp = weatherJson.currentConditions.temp;
@@ -17,28 +17,30 @@ async function getNecessaryWeather(weatherJson) {
   const windspeed = weatherJson.currentConditions.windspeed;
   const humidity = weatherJson.currentConditions.humidity;
   const visibility = weatherJson.currentConditions.visibility;
-  const hoursArrToday = weatherJson.days[0];
+  const hoursArrToday = weatherJson.days[0].hours;
   const currentHour = new Date().getHours();
   const hoursFilteredToday = hoursArrToday.filter((hourObject) => {
     const reformattedDatetime = hourObject.datetime
       .split("")
       .splice(0, 2)
-      .join();
+      .join("");
     if (reformattedDatetime >= currentHour) return true;
     else return false;
   });
-  const hoursArrTomorrow = weatherJson.days[1];
+
+  const hoursArrTomorrow = weatherJson.days[1].hours;
 
   const hoursFilteredTomorrow = hoursArrTomorrow.filter((hourObject) => {
     const reformattedDatetime = hourObject.datetime
       .split("")
       .splice(0, 2)
-      .join();
+      .join("");
     if (reformattedDatetime < currentHour) return true;
     else return false;
   });
   const hours24ArrFiltered = hoursFilteredToday.concat(hoursFilteredTomorrow);
   return {
+    city,
     icon,
     description,
     currentTemp,
@@ -49,5 +51,6 @@ async function getNecessaryWeather(weatherJson) {
     hours24ArrFiltered,
   };
 }
-let weatherJson = getWeatherFromApi();
-console.log(weatherJson);
+const weatherJson = await getWeatherFromApi();
+const necessaryWeatherObj = await getCurrentWeather(weatherJson);
+console.log(necessaryWeatherObj);
