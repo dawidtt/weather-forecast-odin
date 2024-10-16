@@ -18,7 +18,7 @@ async function getCurrentWeather(weatherJson) {
   const description = weatherJson.currentConditions.conditions;
   const currentTemp = weatherJson.currentConditions.temp;
   const feelsLike = weatherJson.currentConditions.feelslike;
-  const windspeed = weatherJson.currentConditions.windspeed;
+  const windSpeed = weatherJson.currentConditions.windspeed;
   const humidity = weatherJson.currentConditions.humidity;
   const visibility = weatherJson.currentConditions.visibility;
   const hoursArrToday = weatherJson.days[0].hours;
@@ -57,7 +57,7 @@ async function getCurrentWeather(weatherJson) {
     description,
     currentTemp,
     feelsLike,
-    windspeed,
+    windSpeed,
     humidity,
     visibility,
     hours24ArrFilteredAndMapped,
@@ -99,6 +99,8 @@ async function handleSearchCity(event) {
     console.log(currentWeather);
     const forecast = await getWeatherForecast(weatherJson);
     console.log(forecast);
+    generateMainContainer();
+    fillMainWithMetricData(currentWeather);
   } else {
     console.log(weatherJson.msg);
   }
@@ -271,8 +273,9 @@ function fillMainWithMetricData(weatherJson) {
   // icon to do
   const icon = document.querySelector(".icon-container img");
   const iconDescription = document.querySelector(".icon-container p");
+  iconDescription.textContent = weatherJson.description;
 
-  const dayTemp = document.querySelector(".temp-container .dat-temp h3");
+  const dayTemp = document.querySelector(".temp-container .day-temp h3");
   dayTemp.textContent = weatherJson.currentTemp;
 
   const feelsLike = document.querySelector(
@@ -280,7 +283,7 @@ function fillMainWithMetricData(weatherJson) {
   );
   feelsLike.textContent = weatherJson.feelsLike;
   const wind = document.querySelector(".wind p");
-  wind.textContent = weatherJson.wind;
+  wind.textContent = weatherJson.windSpeed;
 
   const humidity = document.querySelector(".humidity p");
   humidity.textContent = weatherJson.humidity;
@@ -290,15 +293,18 @@ function fillMainWithMetricData(weatherJson) {
 
   const hoursHourNodeList = document.querySelectorAll(".hour-container .hour");
   const hoursImgNodeList = document.querySelectorAll(".hour-container img");
-  const hoursTempNodeList = document.querySelectorAll(".hour-container temp");
+  const hoursTempNodeList = document.querySelectorAll(".hour-container .temp");
 
   const hoursHourArr = [...hoursHourNodeList];
   const hoursImgArr = [...hoursImgNodeList];
   const hoursTempArr = [...hoursTempNodeList];
 
   for (let i = 0; i < hoursHourArr.length; i++) {
-    hoursHourArr.textContent = weatherJson.hours24ArrFiltered[i].dateTime;
-    hoursImgArr.src = weatherJson.hours24ArrFiltered[i].icon;
-    hoursTempArr.src = weatherJson.hours24ArrFiltered[i].temp;
+    hoursHourArr[i].textContent =
+      weatherJson.hours24ArrFilteredAndMapped[i].dateTime;
+    // to do
+    // hoursImgArr[i].src = weatherJson.hours24ArrFilteredAndMapped[i].icon;
+    hoursTempArr[i].textContent =
+      weatherJson.hours24ArrFilteredAndMapped[i].temp;
   }
 }
