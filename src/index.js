@@ -1,11 +1,15 @@
 import "./template.css";
 
 async function getWeatherFromApi(city = "Warszawa") {
-  const weather = await fetch(
-    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=us&key=LNU6KDBHHJ4VX7EVPJTQ2E7XZ&contentType=json`,
-  );
-  const weatherJson = await weather.json();
-  return weatherJson;
+  try {
+    const weather = await fetch(
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=LNU6KDBHHJ4VX7EVPJTQ2E7XZ&contentType=json`,
+    );
+    const weatherJson = await weather.json();
+    return weatherJson;
+  } catch (error) {
+    return { error, msg: "Something went wrong. Try again." };
+  }
 }
 
 async function getCurrentWeather(weatherJson) {
@@ -79,11 +83,16 @@ async function handleSearchCity(event) {
 
   const citySearch = document.querySelector("#search-city");
   console.log(citySearch.value);
-
   const weatherJson = await getWeatherFromApi(citySearch.value);
-  const currentWeather = await getCurrentWeather(weatherJson);
-  console.log(currentWeather);
-  const forecast = await getWeatherForecast(weatherJson);
-  console.log(forecast);
+  console.log(weatherJson);
+
+  if (!weatherJson.error) {
+    const currentWeather = await getCurrentWeather(weatherJson);
+    console.log(currentWeather);
+    const forecast = await getWeatherForecast(weatherJson);
+    console.log(forecast);
+  } else {
+    console.log(weatherJson.msg);
+  }
 }
 searchSubmit.addEventListener("click", handleSearchCity);
