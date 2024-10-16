@@ -96,3 +96,160 @@ async function handleSearchCity(event) {
   }
 }
 searchSubmit.addEventListener("click", handleSearchCity);
+
+function generateMainContainer() {
+  const main = document.querySelector("main");
+  const mainContent = ` <div class="top-container">
+        <h2></h2>
+        <div class="date-today">
+          <div class="date-today-top"><p></p></div>
+          <div class="date-today-bottom"><p></p></div>
+        </div>
+      </div>
+
+      <div class="temp-container">
+        <div class="icon-container">
+          <img />
+          <p></p>
+        </div>
+        <div class="day-temp"><h3></h3></div>
+        <div class="day-fellslike-temp"><h3></h3></div>
+      </div>
+      <div class="more-data-container">
+        <div class="wind">
+          <p></p>
+        </div>
+        <div class="humidity">
+          <p></p>
+        </div>
+        <div class="visibility">
+          <p></p>
+        </div>
+      </div>
+      <div class="hours-forecast">
+        <button class="previous"><</button>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <div class="hour-container">
+          <p class="hour"></p>
+          <img src="" alt="" />
+          <p class="temp"></p>
+        </div>
+        <button class="next">></button>
+      </div>
+         `;
+  main.innerHTML = mainContent;
+}
