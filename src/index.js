@@ -253,3 +253,44 @@ function generateMainContainer() {
          `;
   main.innerHTML = mainContent;
 }
+function fillMainWithMetricData(weatherJson) {
+  const city = document.querySelector("main .top-container h2");
+  city.textContent = weatherJson.city;
+
+  // dates to do
+  const dateToday = document.querySelector("date-today-top p");
+  const currentHour = document.querySelector("date-today-bottom p");
+  // icon to do
+  const icon = document.querySelector(".icon-container img");
+  const iconDescription = document.querySelector(".icon-container p");
+
+  const dayTemp = document.querySelector(".temp-container .dat-temp h3");
+  dayTemp.textContent = weatherJson.currentTemp;
+
+  const feelsLike = document.querySelector(
+    ".temp-container .day-fellslike-temp h3",
+  );
+  feelsLike.textContent = weatherJson.feelsLike;
+  const wind = document.querySelector(".wind p");
+  wind.textContent = weatherJson.wind;
+
+  const humidity = document.querySelector(".humidity p");
+  humidity.textContent = weatherJson.humidity;
+
+  const visibility = document.querySelector(".visibility p");
+  visibility.textContent = weatherJson.visibility;
+
+  const hoursHourNodeList = document.querySelectorAll(".hour-container .hour");
+  const hoursImgNodeList = document.querySelectorAll(".hour-container img");
+  const hoursTempNodeList = document.querySelectorAll(".hour-container temp");
+
+  const hoursHourArr = [...hoursHourNodeList];
+  const hoursImgArr = [...hoursImgNodeList];
+  const hoursTempArr = [...hoursTempNodeList];
+
+  for (let i = 0; i < hoursHourArr.length; i++) {
+    hoursHourArr.textContent = weatherJson.hours24ArrFiltered[i].dateTime;
+    hoursImgArr.src = weatherJson.hours24ArrFiltered[i].icon;
+    hoursTempArr.src = weatherJson.hours24ArrFiltered[i].temp;
+  }
+}
