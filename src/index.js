@@ -42,7 +42,15 @@ async function getCurrentWeather(weatherJson) {
     if (reformattedDatetime < currentHour) return true;
     else return false;
   });
+
   const hours24ArrFiltered = hoursFilteredToday.concat(hoursFilteredTomorrow);
+  const hours24ArrFilteredAndMapped = hours24ArrFiltered.map((hour) => {
+    return {
+      dateTime: hour.datetime.slice(0, -2),
+      icon: hour.icon,
+      temp: hour.temp,
+    };
+  });
   return {
     city,
     icon,
@@ -52,7 +60,7 @@ async function getCurrentWeather(weatherJson) {
     windspeed,
     humidity,
     visibility,
-    hours24ArrFiltered,
+    hours24ArrFilteredAndMapped,
   };
 }
 async function getWeatherForecast(weatherJson) {
