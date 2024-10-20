@@ -143,6 +143,7 @@ function generateMainContainer() {
       </div>
       <div class="hours-forecast">
         <button class="previous"><</button>
+        <div class="hours-wrapper">
         <div class="hour-container">
           <p class="hour"></p>
           <img src="" alt="" />
@@ -262,6 +263,7 @@ function generateMainContainer() {
           <p class="hour"></p>
           <img src="" alt="" />
           <p class="temp"></p>
+        </div>
         </div>
         <button class="next">></button>
       </div>
