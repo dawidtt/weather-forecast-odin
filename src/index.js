@@ -100,7 +100,10 @@ async function handleSearchCity(event) {
     const forecast = await getWeatherForecast(weatherJson);
     console.log(forecast);
     generateMainContainer();
-    fillMainWithMetricData(currentWeather);
+    fillChosenContainerWithMetricData(currentWeather);
+
+    generateWeekForecastContainer();
+    fillForecastContainerWithMetricData(forecast);
   } else {
     console.log(weatherJson.msg);
   }
@@ -109,7 +112,9 @@ searchSubmit.addEventListener("click", handleSearchCity);
 
 function generateMainContainer() {
   const main = document.querySelector("main");
-  const mainContent = ` <div class="top-container">
+  const mainContent = ` 
+  <div class="chosen-city-container">
+      <div class="top-container">
         <h2></h2>
         <div class="date-today">
           <div class="date-today-top"><p></p></div>
@@ -260,10 +265,11 @@ function generateMainContainer() {
         </div>
         <button class="next">></button>
       </div>
+    </div>
          `;
   main.innerHTML = mainContent;
 }
-function fillMainWithMetricData(weatherJson) {
+function fillChosenContainerWithMetricData(weatherJson) {
   const city = document.querySelector("main .top-container h2");
   city.textContent = weatherJson.city;
 
@@ -306,5 +312,74 @@ function fillMainWithMetricData(weatherJson) {
     // hoursImgArr[i].src = weatherJson.hours24ArrFilteredAndMapped[i].icon;
     hoursTempArr[i].textContent =
       weatherJson.hours24ArrFilteredAndMapped[i].temp;
+  }
+}
+function generateWeekForecastContainer() {
+  const main = document.querySelector("main");
+  const weekForecast = document.createElement("div");
+  weekForecast.classList.add("week-forecast-container");
+  weekForecast.innerHTML = `
+      <h2></h2>
+      <div class="week-container">
+        <h3></h3>
+        <img src="" alt="">
+        <p class="max-temp"></p>
+        <p class="min-temp"></p>
+      </div>
+      <div class="week-container">
+        <h3></h3>
+        <img src="" alt="">
+        <p class="max-temp"></p>
+        <p class="min-temp"></p>
+      </div>
+      <div class="week-container">
+        <h3></h3>
+        <img src="" alt="">
+        <p class="max-temp"></p>
+        <p class="min-temp"></p>
+      </div>
+      <div class="week-container">
+        <h3></h3>
+        <img src="" alt="">
+        <p class="max-temp"></p>
+        <p class="min-temp"></p>
+      </div>
+      <div class="week-container">
+        <h3></h3>
+        <img src="" alt="">
+        <p class="max-temp"></p>
+        <p class="min-temp"></p>
+      </div>
+      <div class="week-container">
+        <h3></h3>
+        <img src="" alt="">
+        <p class="max-temp"></p>
+        <p class="min-temp"></p>
+      </div>
+      <div class="week-container">
+        <h3></h3>
+        <img src="" alt="">
+        <p class="max-temp"></p>
+        <p class="min-temp"></p>
+      </div>
+    `;
+  console.log(weekForecast);
+  main.appendChild(weekForecast);
+}
+function fillForecastContainerWithMetricData(forecastJson) {
+  // todo name of the week
+
+  // todo icon path, still no icons selected
+
+  const maxTempArr = [
+    ...document.querySelectorAll(".week-container .max-temp"),
+  ];
+  const minTempArr = [
+    ...document.querySelectorAll(".week-container .min-temp"),
+  ];
+  console.log(maxTempArr);
+  for (let i = 0; i < 7; i++) {
+    maxTempArr[i].textContent = forecastJson[i].tempMax;
+    minTempArr[i].textContent = forecastJson[i].tempMin;
   }
 }
