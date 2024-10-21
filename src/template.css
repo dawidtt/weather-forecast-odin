@@ -38,12 +38,28 @@ img {
 body {
   font-size: 18px;
   padding: 20px;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #2b7b8c;
+  border-radius: 25px;
+  padding: 8px 12px;
+}
+header .logo {
+  font-size: calc(1.2rem + 1vw);
+}
+header .weather {
+  color: #ffffff;
+}
+header .app {
+  color: #ffd900;
 }
 
 /* Switch Button */
@@ -117,9 +133,41 @@ form {
   justify-content: space-between;
   align-items: center;
   gap: 15px;
+  position: relative;
 }
 .search-container input {
   flex-grow: 1;
+  padding: 4px;
+  outline: none;
+  min-width: 100%;
+  border-radius: 5px;
+  border: 1px solid #8f8f8f;
+}
+
+.search-container button {
+  position: absolute;
+  right: 12px;
+}
+
+/* removing x from search input  */
+
+/* clears the ‘X’ from Internet Explorer */
+input[type="search"]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+input[type="search"]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+/* clears the ‘X’ from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
 }
 
 .chosen-city-container > div {
