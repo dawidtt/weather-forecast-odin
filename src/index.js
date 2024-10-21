@@ -340,20 +340,20 @@ function fillChosenContainerWithMetricData(weatherJson) {
   iconDescription.textContent = weatherJson.description;
 
   const dayTemp = document.querySelector(".temp-container .day-temp h3");
-  dayTemp.textContent = weatherJson.currentTemp;
+  dayTemp.textContent = `${weatherJson.currentTemp}°C`;
 
   const feelsLike = document.querySelector(
     ".temp-container .day-feelslike-temp h3",
   );
-  feelsLike.textContent = weatherJson.feelsLike;
+  feelsLike.textContent = `${weatherJson.feelsLike}°C`;
   const wind = document.querySelector(".wind p");
-  wind.textContent = weatherJson.windSpeed;
+  wind.textContent = `Wind: ${weatherJson.windSpeed} km/h`;
 
   const humidity = document.querySelector(".humidity p");
-  humidity.textContent = weatherJson.humidity;
+  humidity.textContent = `Humidity: ${weatherJson.humidity}%`;
 
   const visibility = document.querySelector(".visibility p");
-  visibility.textContent = weatherJson.visibility;
+  visibility.textContent = `Visibility: ${weatherJson.visibility} km`;
 
   const hoursHourNodeList = document.querySelectorAll(".hour-container .hour");
   const hoursImgNodeList = document.querySelectorAll(".hour-container img");

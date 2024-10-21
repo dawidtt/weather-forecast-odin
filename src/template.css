@@ -192,7 +192,7 @@ input[type="search"]::-webkit-search-results-decoration {
   align-items: center;
 }
 .chosen-city-container .temp-container {
-  background-color: #2196f3;
+  background-color: #4faefc;
   border-radius: 25px;
   padding: 10px;
   margin: 20px 0;
@@ -233,6 +233,7 @@ input[type="search"]::-webkit-search-results-decoration {
   padding: 8px;
   min-width: 10%;
   text-align: center;
+  color: #757575;
 }
 .hours-forecast button {
   background-color: transparent;
