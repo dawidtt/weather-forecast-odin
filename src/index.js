@@ -178,8 +178,12 @@ function generateMainContainer() {
           <img />
           <p></p>
         </div>
-        <div class="day-temp"><h3></h3></div>
-        <div class="day-fellslike-temp"><h3></h3></div>
+        <div class="temp-wrapper">
+         <div class="day-temp"><h3></h3></div>
+        <div class="day-feelslike-temp"><h3></h3></div>
+        </div>
+        
+       
       </div>
       <div class="more-data-container">
         <div class="wind">
@@ -339,7 +343,7 @@ function fillChosenContainerWithMetricData(weatherJson) {
   dayTemp.textContent = weatherJson.currentTemp;
 
   const feelsLike = document.querySelector(
-    ".temp-container .day-fellslike-temp h3",
+    ".temp-container .day-feelslike-temp h3",
   );
   feelsLike.textContent = weatherJson.feelsLike;
   const wind = document.querySelector(".wind p");
