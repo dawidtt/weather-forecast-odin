@@ -97,7 +97,7 @@ async function getCurrentWeather(weatherJson) {
   const hours24ArrFiltered = hoursFilteredToday.concat(hoursFilteredTomorrow);
   const hours24ArrFilteredAndMapped = hours24ArrFiltered.map((hour) => {
     return {
-      dateTime: hour.datetime.slice(0, -2),
+      dateTime: hour.datetime.slice(0, -3),
       icon: getWeatherIcon(hour.icon),
       temp: hour.temp,
     };
