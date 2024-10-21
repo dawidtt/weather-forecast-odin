@@ -98,7 +98,7 @@ async function getCurrentWeather(weatherJson) {
   const hours24ArrFilteredAndMapped = hours24ArrFiltered.map((hour) => {
     return {
       dateTime: hour.datetime.slice(0, -2),
-      icon: hour.icon,
+      icon: getWeatherIcon(hour.icon),
       temp: hour.temp,
     };
   });
@@ -117,7 +117,7 @@ async function getCurrentWeather(weatherJson) {
 async function getWeatherForecast(weatherJson) {
   function createDay(day) {
     const dateTime = day.datetime;
-    const icon = day.icon;
+    const icon = getWeatherIcon(day.icon);
     const tempMax = day.tempmax;
     const tempMin = day.tempmin;
     return { dateTime, icon, tempMax, tempMin };
@@ -367,9 +367,9 @@ function fillChosenContainerWithMetricData(weatherJson) {
     hoursHourArr[i].textContent =
       weatherJson.hours24ArrFilteredAndMapped[i].dateTime;
     // to do
-    // hoursImgArr[i].src = weatherJson.hours24ArrFilteredAndMapped[i].icon;
+    hoursImgArr[i].src = weatherJson.hours24ArrFilteredAndMapped[i].icon;
     hoursTempArr[i].textContent =
-      weatherJson.hours24ArrFilteredAndMapped[i].temp;
+      `${weatherJson.hours24ArrFilteredAndMapped[i].temp}°C`;
   }
 }
 function generateWeekForecastContainer() {
@@ -437,7 +437,7 @@ function fillForecastContainerWithMetricData(forecastJson) {
   ];
   console.log(maxTempArr);
   for (let i = 0; i < 7; i++) {
-    maxTempArr[i].textContent = forecastJson[i].tempMax;
-    minTempArr[i].textContent = forecastJson[i].tempMin;
+    maxTempArr[i].textContent = `${forecastJson[i].tempMax}°C`;
+    minTempArr[i].textContent = `${forecastJson[i].tempMin}°C`;
   }
 }
