@@ -242,9 +242,9 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 .hours-wrapper {
   display: flex;
-  overflow: hidden;
+  overflow-x: scroll;
   gap: 15px;
-  margin: 20px 0;
+  padding: 20px 0;
 }
 .hour-container {
   min-width: 80px;

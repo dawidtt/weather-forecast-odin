@@ -197,7 +197,6 @@ function generateMainContainer() {
         </div>
       </div>
       <div class="hours-forecast">
-        <button class="previous"><</button>
         <div class="hours-wrapper">
         <div class="hour-container">
           <p class="hour"></p>
@@ -320,7 +319,6 @@ function generateMainContainer() {
           <p class="temp"></p>
         </div>
         </div>
-        <button class="next">></button>
       </div>
     </div>
          `;
