@@ -321,11 +321,22 @@ input[type="search"]::-webkit-search-results-decoration {
   main {
     display: grid;
     grid-template-columns: 50% 50%;
-    width: 100vw;
   }
   .chosen-city-container,
   .week-forecast-container {
-    width: 50%;
     height: 100%;
+  }
+  .chosen-city-container {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 100%;
+  }
+  .week-forecast-container {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    margin: 0;
+    overflow-y: scroll;
   }
 }
