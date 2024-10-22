@@ -115,8 +115,21 @@ async function getCurrentWeather(weatherJson) {
   };
 }
 async function getWeatherForecast(weatherJson) {
+  function getDayOfWeek(datetime) {
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const index = new Date(datetime).getDay();
+    return days[index];
+  }
   function createDay(day) {
-    const dateTime = day.datetime;
+    const dateTime = getDayOfWeek(day.datetime);
     const icon = getWeatherIcon(day.icon);
     const tempMax = day.tempmax;
     const tempMin = day.tempmin;

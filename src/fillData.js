@@ -51,18 +51,22 @@ function fillChosenContainerWithMetricData(weatherJson) {
 }
 
 function fillForecastContainerWithMetricData(forecastJson) {
-  // todo name of the week
-
-  // todo icon path, still no icons selected
-
+  const heading = document.querySelector(".week-forecast-container h2");
+  heading.textContent = "Next week";
+  const iconArr = [...document.querySelectorAll(".week-container img")];
+  const headingArr = [...document.querySelectorAll(".week-container h3")];
   const maxTempArr = [
     ...document.querySelectorAll(".week-container .max-temp"),
   ];
   const minTempArr = [
     ...document.querySelectorAll(".week-container .min-temp"),
   ];
-  console.log(maxTempArr);
   for (let i = 0; i < 7; i++) {
+    iconArr[i].src = forecastJson[i].icon;
+    let currentHeading;
+    if (i == 0) currentHeading = "Today";
+    else currentHeading = forecastJson[i].dateTime;
+    headingArr[i].textContent = currentHeading;
     maxTempArr[i].textContent = `${forecastJson[i].tempMax}°C`;
     minTempArr[i].textContent = `${forecastJson[i].tempMin}°C`;
   }

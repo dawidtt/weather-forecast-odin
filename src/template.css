@@ -262,3 +262,70 @@ input[type="search"]::-webkit-search-results-decoration {
 .hour-container p.temp {
   font-size: calc(1rem + 0.3vw);
 }
+
+.week-forecast-container {
+  background-color: #2b7b8c;
+  border-radius: 15px;
+  padding: 15px;
+  margin-top: 20px;
+}
+.week-forecast-container .week-container {
+  background-color: #3a94a7;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  color: #ffffff;
+  border-radius: 10px;
+}
+.week-forecast-container h2 {
+  color: #ffffff;
+  font-size: calc(1.6rem + 1.4vw);
+  font-weight: 600;
+}
+.week-forecast-container .week-container img {
+  width: calc(30px + 2vw);
+}
+.week-forecast-container .week-container .max-temp {
+  font-size: calc(1rem + 1.2vw);
+  font-weight: 700;
+  align-self: stretch;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.week-forecast-container .week-container .min-temp {
+  color: #d2d2d2;
+  font-size: calc(0.65rem + 0.8vw);
+  font-weight: 700;
+  align-self: stretch;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.week-forecast-container .week-container .week-wrapper {
+  gap: calc(4px + 2vw);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+@media (min-width: 330px) {
+  .week-forecast-container .week-container .week-wrapper {
+    flex-direction: row;
+  }
+}
+@media (min-width: 800px) {
+  main {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 100vw;
+  }
+  .chosen-city-container,
+  .week-forecast-container {
+    width: 50%;
+    height: 100%;
+  }
+}

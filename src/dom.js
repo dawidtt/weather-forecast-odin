@@ -1,25 +1,3 @@
-import clearDay from "./assets/img/weather-icons/clear-day.png";
-import clearNight from "./assets/img/weather-icons/clear-night.png";
-import cloudy from "./assets/img/weather-icons/cloudy.png";
-import fog from "./assets/img/weather-icons/fog.png";
-import hail from "./assets/img/weather-icons/hail.png";
-import partlyCloudyDay from "./assets/img/weather-icons/partly-cloudy-day.png";
-import partlyCloudyNight from "./assets/img/weather-icons/partly-cloudy-night.png";
-import rainSnowShowersDay from "./assets/img/weather-icons/rain-snow-showers-day.png";
-import rainSnowShowersNight from "./assets/img/weather-icons/rain-snow-showers-night.png";
-import rainSnow from "./assets/img/weather-icons/rain-snow.png";
-import rain from "./assets/img/weather-icons/rain.png";
-import showersDay from "./assets/img/weather-icons/showers-day.png";
-import showersNight from "./assets/img/weather-icons/showers-night.png";
-import sleet from "./assets/img/weather-icons/sleet.png";
-import snowShowersDay from "./assets/img/weather-icons/snow-showers-day.png";
-import snowShowersNight from "./assets/img/weather-icons/snow-showers-night.png";
-import snow from "./assets/img/weather-icons/snow.png";
-import thunderRain from "./assets/img/weather-icons/thunder-rain.png";
-import thunderShowersDay from "./assets/img/weather-icons/thunder-showers-day.png";
-import thunderShowersNight from "./assets/img/weather-icons/thunder-showers-night.png";
-import thunder from "./assets/img/weather-icons/thunder.png";
-import wind from "./assets/img/weather-icons/wind.png";
 export {
   generateMainContainer,
   generateWeekForecastContainer,
@@ -197,45 +175,73 @@ function generateWeekForecastContainer() {
         <h2></h2>
         <div class="week-container">
           <h3></h3>
+          <div class="week-wrapper">
           <img src="" alt="">
           <p class="max-temp"></p>
           <p class="min-temp"></p>
+          </div>
+          
         </div>
         <div class="week-container">
           <h3></h3>
+          <div class="week-wrapper">
           <img src="" alt="">
           <p class="max-temp"></p>
           <p class="min-temp"></p>
+          </div>
+
+          
+        </div>
+        <div class="week-container">
+        
+          <h3></h3>
+          <div class="week-wrapper"> 
+          <img src="" alt="">
+          <p class="max-temp"></p>
+          <p class="min-temp"></p>
+          </div>
+
+         
         </div>
         <div class="week-container">
           <h3></h3>
+          <div class="week-wrapper"> 
           <img src="" alt="">
           <p class="max-temp"></p>
           <p class="min-temp"></p>
+          </div>
+
+         
         </div>
         <div class="week-container">
           <h3></h3>
+          <div class="week-wrapper">  
           <img src="" alt="">
           <p class="max-temp"></p>
           <p class="min-temp"></p>
+          </div>
+
+        
         </div>
         <div class="week-container">
           <h3></h3>
+          <div class="week-wrapper">
           <img src="" alt="">
           <p class="max-temp"></p>
           <p class="min-temp"></p>
+          </div>
+
+          
         </div>
         <div class="week-container">
           <h3></h3>
+          <div class="week-wrapper"> 
           <img src="" alt="">
           <p class="max-temp"></p>
           <p class="min-temp"></p>
-        </div>
-        <div class="week-container">
-          <h3></h3>
-          <img src="" alt="">
-          <p class="max-temp"></p>
-          <p class="min-temp"></p>
+          </div>
+
+         
         </div>
       `;
   console.log(weekForecast);
