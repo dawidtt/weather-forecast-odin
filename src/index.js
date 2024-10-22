@@ -34,6 +34,34 @@ async function getWeatherFromApi(city = "Warszawa") {
   }
 }
 
+function chooseHourDependedBackground(hour) {
+  const colors = [
+    "#1B263B",
+    "#243B55",
+    "#3A517A",
+    "#4A80B4",
+    "#7AB4F5",
+    "#8AC7FF",
+    "#A5D9FF",
+    "#7AB4F5",
+    "#6099E0",
+    "#4A80B4",
+    "#3A517A",
+    "#2B3C60",
+  ];
+  if (hour < 2) return [colors[0], colors[1], colors[2]];
+  else if (hour < 4) return [colors[1], colors[2], colors[3]];
+  else if (hour < 6) return [colors[2], colors[3], colors[4]];
+  else if (hour < 8) return [colors[3], colors[4], colors[5]];
+  else if (hour < 10) return [colors[4], colors[5], colors[6]];
+  else if (hour < 12) return [colors[5], colors[6], colors[7]];
+  else if (hour < 14) return [colors[6], colors[7], colors[8]];
+  else if (hour < 16) return [colors[7], colors[8], colors[9]];
+  else if (hour < 18) return [colors[8], colors[9], colors[10]];
+  else if (hour < 20) return [colors[9], colors[10], colors[11]];
+  else if (hour < 22) return [colors[10], colors[11], colors[0]];
+  else return [colors[11], colors[0], colors[1]];
+}
 function getWeatherIcon(icon) {
   const weatherIcons = {
     "clear-day": clearDay,
@@ -155,6 +183,7 @@ async function handleSearchCity(event) {
 
     generateWeekForecastContainer();
     fillForecastContainerWithMetricData(forecast);
+    changeBackgroundColors(currentWeather);
   } else {
     console.log(weatherJson.msg);
   }
@@ -364,7 +393,7 @@ function fillChosenContainerWithMetricData(weatherJson) {
   for (let i = 0; i < hoursHourArr.length; i++) {
     hoursHourArr[i].textContent =
       weatherJson.hours24ArrFilteredAndMapped[i].dateTime;
-    // to do
+
     hoursImgArr[i].src = weatherJson.hours24ArrFilteredAndMapped[i].icon;
     hoursTempArr[i].textContent =
       `${weatherJson.hours24ArrFilteredAndMapped[i].temp}°C`;
@@ -437,5 +466,31 @@ function fillForecastContainerWithMetricData(forecastJson) {
   for (let i = 0; i < 7; i++) {
     maxTempArr[i].textContent = `${forecastJson[i].tempMax}°C`;
     minTempArr[i].textContent = `${forecastJson[i].tempMin}°C`;
+  }
+}
+function changeBackgroundColors(weatherJson) {
+  const hoursContainersNodeList = document.querySelectorAll(".hour-container");
+
+  const hourContainers = [...hoursContainersNodeList];
+  const tempContainer = document.querySelector(
+    ".chosen-city-container .temp-container",
+  );
+  tempContainer.style = `background: ${
+    chooseHourDependedBackground(new Date().getHours())[0]
+  };
+background: linear-gradient(90deg, ${
+    chooseHourDependedBackground(new Date().getHours())[0]
+  } 0%, ${chooseHourDependedBackground(new Date().getHours())[1]} 70%, ${
+    chooseHourDependedBackground(new Date().getHours())[2]
+  } 90%);`;
+  for (let i = 0; i < hourContainers.length; i++) {
+    console.log(
+      chooseHourDependedBackground(
+        weatherJson.hours24ArrFilteredAndMapped[i].dateTime.slice(0, 2),
+      ),
+    );
+    hourContainers[i].style.backgroundColor = chooseHourDependedBackground(
+      weatherJson.hours24ArrFilteredAndMapped[i].dateTime.slice(0, 2),
+    )[0];
   }
 }
