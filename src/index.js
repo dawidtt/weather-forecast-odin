@@ -3,6 +3,7 @@ import {
   generateMainContainer,
   generateWeekForecastContainer,
   changeBackgroundColors,
+  generateLoadingComponent,
 } from "./dom";
 import {
   getWeatherFromApi,
@@ -46,7 +47,9 @@ async function handleSearchCity(event) {
       fillForecastContainerWithMetricData(forecast);
     });
   } else {
-    console.log(weatherJson.msg);
+    alert(weatherJson.msg);
+    location.reload();
   }
 }
+searchSubmit.addEventListener("click", generateLoadingComponent);
 searchSubmit.addEventListener("click", handleSearchCity);

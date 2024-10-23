@@ -2,6 +2,7 @@ export {
   generateMainContainer,
   generateWeekForecastContainer,
   changeBackgroundColors,
+  generateLoadingComponent,
 };
 function generateMainContainer() {
   const main = document.querySelector("main");
@@ -164,6 +165,8 @@ function generateMainContainer() {
         </div>
       </div>
            `;
+  main.innerHTML = "";
+
   main.innerHTML = mainContent;
 }
 
@@ -244,7 +247,7 @@ function generateWeekForecastContainer() {
          
         </div>
       `;
-  console.log(weekForecast);
+
   main.appendChild(weekForecast);
 }
 
@@ -301,4 +304,9 @@ function chooseHourDependedBackground(hour) {
   else if (hour < 20) return [colors[9], colors[10], colors[11]];
   else if (hour < 22) return [colors[10], colors[11], colors[0]];
   else return [colors[11], colors[0], colors[1]];
+}
+function generateLoadingComponent() {
+  const main = document.querySelector("main");
+  main.innerHTML = `<div class="loader"></div>
+`;
 }
