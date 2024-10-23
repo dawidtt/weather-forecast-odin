@@ -40,6 +40,11 @@ async function handleSearchCity(event) {
     generateWeekForecastContainer();
     fillForecastContainerWithMetricData(forecast);
     changeBackgroundColors(currentWeather);
+    const switchInput = document.querySelector("header input");
+    switchInput.addEventListener("input", () => {
+      fillChosenContainerWithMetricData(currentWeather);
+      fillForecastContainerWithMetricData(forecast);
+    });
   } else {
     console.log(weatherJson.msg);
   }

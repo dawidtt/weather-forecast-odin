@@ -17,7 +17,11 @@ function fillChosenContainerWithMetricData(weatherJson) {
   iconDescription.textContent = weatherJson.description;
 
   const dayTemp = document.querySelector(".temp-container .day-temp h3");
-  dayTemp.textContent = `${weatherJson.currentTemp}°C`;
+  if (document.querySelector("header input").checked) {
+    dayTemp.textContent = `${(weatherJson.currentTemp * 1.8 + 32).toFixed(1)}°F`;
+  } else {
+    dayTemp.textContent = `${weatherJson.currentTemp}°C`;
+  }
 
   const feelsLike = document.querySelector(
     ".temp-container .day-feelslike-temp h3",
@@ -45,8 +49,13 @@ function fillChosenContainerWithMetricData(weatherJson) {
       weatherJson.hours24ArrFilteredAndMapped[i].dateTime;
 
     hoursImgArr[i].src = weatherJson.hours24ArrFilteredAndMapped[i].icon;
-    hoursTempArr[i].textContent =
-      `${weatherJson.hours24ArrFilteredAndMapped[i].temp}°C`;
+    if (document.querySelector("header input").checked) {
+      hoursTempArr[i].textContent =
+        `${(weatherJson.hours24ArrFilteredAndMapped[i].temp * 1.8 + 32).toFixed(1)}°F`;
+    } else {
+      hoursTempArr[i].textContent =
+        `${weatherJson.hours24ArrFilteredAndMapped[i].temp}°C`;
+    }
   }
 }
 
@@ -67,7 +76,14 @@ function fillForecastContainerWithMetricData(forecastJson) {
     if (i == 0) currentHeading = "Today";
     else currentHeading = forecastJson[i].dateTime;
     headingArr[i].textContent = currentHeading;
-    maxTempArr[i].textContent = `${forecastJson[i].tempMax}°C`;
-    minTempArr[i].textContent = `${forecastJson[i].tempMin}°C`;
+    if (document.querySelector("header input").checked) {
+      maxTempArr[i].textContent =
+        `${(forecastJson[i].tempMax * 1.8 + 32).toFixed(1)}°F`;
+      minTempArr[i].textContent =
+        `${(forecastJson[i].tempMin * 1.8 + 32).toFixed(1)}°F`;
+    } else {
+      maxTempArr[i].textContent = `${forecastJson[i].tempMax}°C`;
+      minTempArr[i].textContent = `${forecastJson[i].tempMin}°C`;
+    }
   }
 }
